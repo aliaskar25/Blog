@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block panel %}
+<a href="{% url 'post_create_url' %}">Create post</a>
+<a href="{% url 'tag_create_url' %}">Create Tag</a>
+    {% if detail %}
+        <a href="{{ object.get_update_url }}">Edit</a>
+        <a href="{{ object.get_delete_url }}">Delete</a>
+    {% endif %}
+{% endblock %}

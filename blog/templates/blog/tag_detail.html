@@ -1,0 +1,18 @@
+{% extends 'blog/base_blog.html'%}
+
+{% block content %}
+    <div>
+        <h1>{{ tag.title|title }}</h1>
+
+        {% for post in tag.posts.all %}
+            <div class="posts">
+                <div class="posts-element">
+                    <div class="post-title">{{ post.title }}</div>
+                    <div class="post-description">{{ post.body|truncatewords:2 }}</div>
+                    <div class="post-data-pub">{{ post.data_pub }}</div>
+                    <a href="{{ post.get_absolute_url }}" class="read-post" >Read</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

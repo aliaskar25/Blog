@@ -1,0 +1,28 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block content %}
+<div class="page-image">
+    <div class="best-posts">
+        <div class="best-tips">Best posts</div>
+        {% for best_post in best_posts %}
+            <div class="best-posts-element">{{ best_post.title }}</div>
+        {% endfor %}
+    </div>
+    <div class="title-page">Kitchen</div>
+</div>
+
+    <div class="posts">
+            {% for post in posts %}
+            <div class="posts-element">
+                <div class="post-title">{{ post.title }}</div>
+                <div class="post-description">{{ post.body|truncatewords:2 }}</div>
+                {% for tag in post.tags.all %}
+                    <div class="post-tag">Tags: <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></div>
+                {% endfor %}
+                <div class="post-data-pub">{{ post.data_pub }}</div>
+                <a href="{{ post.get_absolute_url }}" class="read-post" >Read</a>
+            </div>
+            {% endfor %}
+
+    </div>
+{% endblock %}
